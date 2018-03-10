@@ -1,0 +1,9 @@
+---
+
+vscode_gpg_dir: /etc/pki/rpm-gpg
+vscode_gpg_file: "{{ vscode_gpg_dir }}/RPM-GPG-KEY-microsoft"
+
+vscode_yum_repo_name: vscode
+vscode_yum_repo_desc: Visual Studio Code
+vscode_yum_repo_baseurl: https://packages.microsoft.com/yumrepos/vscode
+vscode_yum_repo_gpgkey: "{{ vscode_gpg_file }}"

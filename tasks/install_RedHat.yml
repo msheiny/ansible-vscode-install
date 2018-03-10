@@ -1,0 +1,22 @@
+---
+
+- name: Copy GPG key
+  copy:
+    src: microsoft.asc
+    dest: "{{ vscode_gpg_dir }}/RPM-GPG-KEY-microsoft"
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Install repository
+  yum_repository:
+    description: "{{ vscode_yum_repo_desc }}"
+    name: "{{ vscode_yum_repo_name }}"
+    baseurl: "{{ vscode_yum_repo_baseurl }}"
+    gpgkey: "{{ vscode_yum_repo_gpgkey }}"
+    gpgcheck: yes
+    enabled: yes
+
+- name: Install code
+  package:
+    name: code

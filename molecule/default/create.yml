@@ -1,0 +1,40 @@
+---
+- name: Create
+  hosts: localhost
+  connection: local
+  gather_facts: False
+  vars:
+    molecule_file: "{{ lookup('env', 'MOLECULE_FILE') }}"
+    molecule_ephemeral_directory: "{{ lookup('env', 'MOLECULE_EPHEMERAL_DIRECTORY') }}"
+    molecule_scenario_directory: "{{ lookup('env', 'MOLECULE_SCENARIO_DIRECTORY') }}"
+    molecule_yml: "{{ lookup('file', molecule_file) | molecule_from_yaml }}"
+  tasks:
+    - name: Discover local Docker images
+      docker_image_facts:
+        name: "molecule_local/{{ item.name }}"
+      with_items: "{{ molecule_yml.platforms }}"
+      register: docker_images
+
+    - name: Build an Ansible compatible image
+      docker_image:
+        path: "{{ playbook_dir }}"
+        name: "molecule_local/{{ item.name }}"
+        buildargs:
+          image: "{{ item.image }}"
+        force: "{{ item.force | default(True) }}"
+      with_items: "{{ molecule_yml.platforms }}"
+      when: docker_images.results | map(attribute='images') | select('equalto', []) | list | count >= 0
+
+    - name: Create molecule instance(s)
+      docker_container:
+        name: "{{ item.name }}"
+        hostname: "{{ item.name }}"
+        image: "molecule_local/{{ item.name }}"
+        state: started
+        recreate: False
+        log_driver: syslog
+        command: "{{ item.command | default('sleep infinity') }}"
+        privileged: "{{ item.privileged | default(omit) }}"
+        volumes: "{{ item.volumes | default(omit) }}"
+        capabilities: "{{ item.capabilities | default(omit) }}"
+      with_items: "{{ molecule_yml.platforms }}"
