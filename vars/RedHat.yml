@@ -7,3 +7,7 @@ vscode_yum_repo_name: vscode
 vscode_yum_repo_desc: Visual Studio Code
 vscode_yum_repo_baseurl: https://packages.microsoft.com/yumrepos/vscode
 vscode_yum_repo_gpgkey: "{{ vscode_gpg_file }}"
+
+vscode_pkgs:
+  - code
+  - libX11-xcb

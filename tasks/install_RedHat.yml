@@ -19,4 +19,5 @@
 
 - name: Install code
   package:
-    name: code
+    name: "{{ item }}"
+  with_items: "{{ vscode_pkgs }}"

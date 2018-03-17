@@ -8,6 +8,8 @@ lint:
 platforms:
   - name: vscode_f27
     image: fedora:27
+  - name: vscode_d9
+    image: debian:stretch
 provisioner:
   name: ansible
   lint:

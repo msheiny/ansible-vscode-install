@@ -1,1 +1,10 @@
 ---
+
+# Extensions to install
+vscode_extensions:
+  - eamodio.gitlens
+  - ms-python.python
+  - vscodevim.vim
+
+vscode_pip_pkgs:
+  - pipenv

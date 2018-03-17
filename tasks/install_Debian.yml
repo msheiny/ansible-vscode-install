@@ -1,0 +1,17 @@
+---
+
+- name: Copy GPG key
+  apt_key:
+    data: "{{ lookup('file', 'files/microsoft.asc') }}"
+    state: present
+
+- name: Install repository
+  apt_repository:
+    repo: "deb [arch=amd64] {{ vscode_yum_repo_baseurl }} stable main"
+    filename: vscode
+    update_cache: yes
+
+- name: Install code
+  package:
+    name: "{{ item }}"
+  with_items: "{{ vscode_pkgs }}"

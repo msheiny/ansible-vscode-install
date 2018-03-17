@@ -1,0 +1,7 @@
+---
+
+- name: Install user controlled python modules
+  pip:
+    name: "{{ item }}"
+    extra_args: --user
+  with_items: "{{ vscode_pip_pkgs }}"

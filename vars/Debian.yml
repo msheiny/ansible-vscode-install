@@ -1,0 +1,9 @@
+---
+
+vscode_yum_repo_baseurl: https://packages.microsoft.com/repos/vscode
+
+vscode_pkgs:
+  - code
+  - libasound2
+  - libgtk2.0-0
+  - libxss1
