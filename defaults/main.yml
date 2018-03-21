@@ -4,6 +4,7 @@
 vscode_extensions:
   - eamodio.gitlens
   - ms-python.python
+  - PeterJausovec.vscode-docker
   - vscodevim.vim
 
 vscode_py_sys_pkgs: []
