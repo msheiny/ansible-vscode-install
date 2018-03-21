@@ -10,7 +10,7 @@ vscode_yum_repo_gpgkey: "file://{{ vscode_gpg_file }}"
 
 vscode_pkgs:
   - code
-  - libX11-xcb
+  - "{{ 'libX11' if ansible_distribution_version <= '26' else 'libX11-xcb' }}"
 
 vscode_py_sys_pkgs:
   - python2-pylint
