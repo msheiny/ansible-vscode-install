@@ -6,5 +6,8 @@ vscode_extensions:
   - ms-python.python
   - vscodevim.vim
 
-vscode_pip_pkgs:
-  - pipenv
+vscode_py_sys_pkgs: []
+vscode_pip_pkgs: []
+
+# Install additional python packages
+vscode_python_install: false

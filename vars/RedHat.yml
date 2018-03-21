@@ -11,3 +11,10 @@ vscode_yum_repo_gpgkey: "file://{{ vscode_gpg_file }}"
 vscode_pkgs:
   - code
   - libX11-xcb
+
+vscode_py_sys_pkgs:
+  - python2-pylint
+  - python3-pylint
+  - python2-pep8
+  - python3-pep8
+  - python3-mypy

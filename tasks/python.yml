@@ -1,7 +1,14 @@
 ---
 
-- name: Install user controlled python modules
+- name: Install python modules in user space
   pip:
     name: "{{ item }}"
     extra_args: --user
+  become: no
   with_items: "{{ vscode_pip_pkgs }}"
+
+
+- name: Install system-wide python packages
+  package:
+    name: "{{ item }}"
+  with_items: "{{ vscode_py_sys_pkgs }}"

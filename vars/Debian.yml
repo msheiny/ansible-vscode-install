@@ -7,3 +7,10 @@ vscode_pkgs:
   - libasound2
   - libgtk2.0-0
   - libxss1
+
+vscode_py_sys_pkgs:
+  - mypy
+  - pylint
+  - pylint3
+  - python-pep8
+  - python3-pep8

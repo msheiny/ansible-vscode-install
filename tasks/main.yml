@@ -8,3 +8,9 @@
 
 - name: Configure VSCode
   include_tasks: configure.yml
+
+- name: Install Python specific dependencies
+  include_tasks: python.yml
+  when:
+    - "'ms-python.python' in vscode_extensions"
+    - "vscode_python_install|bool"
