@@ -8,6 +8,11 @@
     group: root
     mode: 0644
 
+- name: Ensure GPG key in RPM db
+  rpm_key:
+    key: "{{ vscode_gpg_file }}"
+    state: present
+
 - name: Install repository
   yum_repository:
     description: "{{ vscode_yum_repo_desc }}"
