@@ -1,8 +1,8 @@
 ---
 
 - name: Install extensions
-  command: "code --install-extension {{ item }}"
+  command: "{{vscode_bin_path|default('')}}code --install-extension {{ item }}"
   register: extension_install_result
   become: no
-  with_items: "{{ vscode_extensions }}"
+  loop: "{{ vscode_extensions }}"
   changed_when: "'successfully installed' in extension_install_result.stdout"

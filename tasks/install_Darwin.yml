@@ -1,0 +1,9 @@
+---
+
+  - name: Install vscode
+    homebrew_cask:
+      name: "{{ item }}"
+      state: present
+      accept_external_apps: true
+    loop: "{{ vscode_pkgs }}"
+    become: no
