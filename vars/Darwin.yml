@@ -1,0 +1,6 @@
+---
+
+vscode_pkgs:
+  - visual-studio-code
+
+vscode_bin_path: /usr/local/bin/
