@@ -1,12 +1,7 @@
 ---
 
 # Extensions to install
-vscode_extensions:
-  - eamodio.gitlens
-  - ms-python.python
-  - PeterJausovec.vscode-docker
-  - shardulm94.trailing-spaces
-  - vscodevim.vim
+vscode_extensions: []
 
 vscode_py_sys_pkgs: []
 vscode_pip_pkgs: []
