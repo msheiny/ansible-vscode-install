@@ -3,4 +3,4 @@
 vscode_pkgs:
   - visual-studio-code
 
-vscode_bin_path: /usr/local/bin/
+vscode_bin_path: /opt/homebrew/bin/
